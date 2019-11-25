@@ -1,0 +1,74 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+Role         Level         Count
+
+ID         INTERVAL          1    
+TARGET     NOMINAL           1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Association Report
+
+              Expected                                                                              Left       Right
+             Confidence    Confidence    Support              Transaction                          Hand of    Hand of    Rule       Rule Item    Rule        Rule
+Relations       (%)           (%)          (%)        Lift       Count              Rule            Rule       Rule      Item 1         2        Item 3     Index
+
+      2          5.00         20.00        5.00       4.00        1.00       PERFUME ==> BLUSA     PERFUME    BLUSA      PERFUME    ========>    BLUSA         5 
+      2          5.00         20.00        5.00       4.00        1.00       CALCA ==> BLUSA       CALCA      BLUSA      CALCA      ========>    BLUSA         7 
+      2         25.00        100.00        5.00       4.00        1.00       SAPATO ==> CALCA      SAPATO     CALCA      SAPATO     ========>    CALCA         3 
+      2         25.00        100.00        5.00       4.00        1.00       BLUSA ==> CALCA       BLUSA      CALCA      BLUSA      ========>    CALCA         8 
+      2         25.00        100.00        5.00       4.00        1.00       SAPATO ==> PERFUME    SAPATO     PERFUME    SAPATO     ========>    PERFUME       1 
+      2         25.00        100.00        5.00       4.00        1.00       BLUSA ==> PERFUME     BLUSA      PERFUME    BLUSA      ========>    PERFUME       6 
+      2          5.00         20.00        5.00       4.00        1.00       PERFUME ==> SAPATO    PERFUME    SAPATO     PERFUME    ========>    SAPATO        2 
+      2          5.00         20.00        5.00       4.00        1.00       CALCA ==> SAPATO      CALCA      SAPATO     CALCA      ========>    SAPATO        4 
+      2         15.00         50.00        5.00       3.33        1.00       SOMBRA ==> BOLSA      SOMBRA     BOLSA      SOMBRA     ========>    BOLSA         9 
+      2         15.00         50.00        5.00       3.33        1.00       BASE ==> BOLSA        BASE       BOLSA      BASE       ========>    BOLSA        10 
+      2         10.00         33.33        5.00       3.33        1.00       BOLSA ==> BASE        BOLSA      BASE       BOLSA      ========>    BASE         12 
+      2         10.00         33.33        5.00       3.33        1.00       BOLSA ==> SOMBRA      BOLSA      SOMBRA     BOLSA      ========>    SOMBRA       11 
+      2         10.00         25.00        5.00       2.50        1.00       BATON ==> BASE        BATON      BASE       BATON      ========>    BASE         17 
+      2         20.00         50.00        5.00       2.50        1.00       SOMBRA ==> BATON      SOMBRA     BATON      SOMBRA     ========>    BATON        15 
+      2         20.00         50.00        5.00       2.50        1.00       BASE ==> BATON        BASE       BATON      BASE       ========>    BATON        18 
+      2          5.00         12.50        5.00       2.50        1.00       TENIS ==> BLUSA       TENIS      BLUSA      TENIS      ========>    BLUSA        13 
+      2         10.00         25.00        5.00       2.50        1.00       BATON ==> SOMBRA      BATON      SOMBRA     BATON      ========>    SOMBRA       16 
+      2         40.00        100.00        5.00       2.50        1.00       BLUSA ==> TENIS       BLUSA      TENIS      BLUSA      ========>    TENIS        14 
+      2         10.00         20.00       10.00       2.00        2.00       MEIA ==> BASE         MEIA       BASE       MEIA       ========>    BASE         21 
+      2         10.00         20.00        5.00       2.00        1.00       CALCA ==> BASE        CALCA      BASE       CALCA      ========>    BASE         25 
+      2          5.00         10.00        5.00       2.00        1.00       MEIA ==> BLUSA        MEIA       BLUSA      MEIA       ========>    BLUSA        23 
+      2         15.00         30.00       15.00       2.00        3.00       MEIA ==> BOLSA        MEIA       BOLSA      MEIA       ========>    BOLSA        19 
+      2         25.00         50.00        5.00       2.00        1.00       BASE ==> CALCA        BASE       CALCA      BASE       ========>    CALCA        26 
+      2         50.00        100.00       15.00       2.00        3.00       BOLSA ==> MEIA        BOLSA      MEIA       BOLSA      ========>    MEIA         20 
+      2         50.00        100.00       10.00       2.00        2.00       BASE ==> MEIA         BASE       MEIA       BASE       ========>    MEIA         22 
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Rule Statistics
+
+The MEANS Procedure
+
+Variable    Label                          Minimum         Maximum            Mean
+----------------------------------------------------------------------------------
+EXP_CONF    Expected Confidence(%)       5.0000000      50.0000000      26.3235294
+CONF        Confidence(%)               10.0000000     100.0000000      40.7598039
+SUPPORT     Support(%)                   5.0000000      25.0000000       8.5294118
+LIFT        Lift                         0.5000000       4.0000000       1.8204657
+----------------------------------------------------------------------------------
+ 
+                                                                                                                                                                                                                                                                
+ 
+Sequence Report
+
+The FREQ Procedure
+
+                          Relations
+ 
+                                     Cumulative    Cumulative
+SET_SIZE    Frequency     Percent     Frequency      Percent
+-------------------------------------------------------------
+       2          68      100.00            68       100.00  

@@ -1,0 +1,11 @@
+if NAME="Cupon" then do;
+ROLE="ID";
+LEVEL="INTERVAL";
+ORDER="";
+end;
+if NAME="Transacao" then do;
+ROLE="TARGET";
+LEVEL="NOMINAL";
+ORDER="";
+end;
+drop DROP;

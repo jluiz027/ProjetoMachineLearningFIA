@@ -1,0 +1,627 @@
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "17/09/19" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "22h37min49s" );
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Training Log";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+*------------------------------------------------------------*
+* Training Log
+Date:                17/09/19
+Time:                22h37min49s
+*------------------------------------------------------------*
+MPRINT(EM_DIAGRAM):    filename O1MORZJR "C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMTRAIN.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto print=O1MORZJR new;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOG "C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMLOG.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "17/09/19" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "22h37min49s" );
+MPRINT(EM_DIAGRAM):   file _LOG;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "User:                DATA MINING T12";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "Site:                70152895";
+MPRINT(EM_DIAGRAM):   put "Platform:            X64_10PRO";
+MPRINT(EM_DIAGRAM):   put "Maintenance Release: 9.04.01M4P110916";
+MPRINT(EM_DIAGRAM):   put "EM Version:          14.2";
+MPRINT(EM_DIAGRAM):   put "* ";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOGIN "C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMTRAIN.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_COPYFILE):   data _null_;
+MPRINT(EM_COPYFILE):   length line $20000;
+MPRINT(EM_COPYFILE):   file _LOG MOD lrecl=20000;
+MPRINT(EM_COPYFILE):   fid=fopen("_LOGIN",'i',20000,'v');
+MPRINT(EM_COPYFILE):   if fid > 0 then do;
+MPRINT(EM_COPYFILE):   do while(^fread(fid));
+MPRINT(EM_COPYFILE):   rlen = frlen(fid);
+MPRINT(EM_COPYFILE):   rc= fget(fid,line,20000);
+MPRINT(EM_COPYFILE):   start = length(line)-length(left(line))+1;
+MPRINT(EM_COPYFILE):   line=strip(line);
+MPRINT(EM_COPYFILE):   put @start line;
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   if fid > 0 then rc=fclose(fid);
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   run;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _LOGIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _LOG mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   filename _LOGIN "C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMSCORE.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   file _LOG mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _LOGIN "C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMREPORT.log" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _LOGIN;
+MPRINT(EM_DIAGRAM):    filename _LOG;
+MPRINT(EM_DIAGRAM):    filename _OUT "C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMOUTPUT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "17/09/19" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "22h37min49s" );
+MPRINT(EM_DIAGRAM):   file _OUT;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "User:                DATA MINING T12";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Training Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMTRAIN.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   ;
+MPRINT(EM_COPYFILE):   data _null_;
+MPRINT(EM_COPYFILE):   length line $20000;
+MPRINT(EM_COPYFILE):   file _OUT MOD lrecl=20000;
+MPRINT(EM_COPYFILE):   fid=fopen("_OUTIN",'i',20000,'v');
+MPRINT(EM_COPYFILE):   if fid > 0 then do;
+MPRINT(EM_COPYFILE):   do while(^fread(fid));
+MPRINT(EM_COPYFILE):   rlen = frlen(fid);
+MPRINT(EM_COPYFILE):   rc= fget(fid,line,20000);
+MPRINT(EM_COPYFILE):   start = length(line)-length(left(line))+1;
+MPRINT(EM_COPYFILE):   line=strip(line);
+MPRINT(EM_COPYFILE):   put @start line;
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   if fid > 0 then rc=fclose(fid);
+MPRINT(EM_COPYFILE):   end;
+MPRINT(EM_COPYFILE):   run;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _OUT mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   put // "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Score Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMSCORE.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   file _OUT mod;
+MPRINT(EM_DIAGRAM):   put _page_;
+MPRINT(EM_DIAGRAM):   put // "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Report Output";
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):    filename _OUTIN "C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMREPORT.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):  ;
+MPRINT(EM_DIAGRAM):   filename _OUTIN;
+MPRINT(EM_DIAGRAM):    filename _OUT;
+MPRINT(EM_DIAGRAM):    filename _emtool_ 'C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMRUNSTATUS.xml' encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):    filename _emtool_ 'C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\Assoc\EMRUNSTATUS.xml' encoding="UTF-8" NOBOM;
+29807      proc freq data=EMWS1.Assoc_VariableSet noprint;
+MPRINT(EM_DIAGRAM):    proc freq data=EMWS1.Assoc_VariableSet noprint;
+29808      table ROLE*LEVEL/out=WORK.AssocMETA;
+MPRINT(EM_DIAGRAM):   table ROLE*LEVEL/out=WORK.AssocMETA;
+29809      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 2 observations read from the data set EMWS1.ASSOC_VARIABLESET.
+NOTE: The data set WORK.ASSOCMETA has 2 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+29810      proc print data=WORK.AssocMETA label noobs;
+MPRINT(EM_DIAGRAM):   proc print data=WORK.AssocMETA label noobs;
+29811      var ROLE LEVEL COUNT;
+MPRINT(EM_DIAGRAM):   var ROLE LEVEL COUNT;
+29812      label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label ROLE = "Role" LEVEL = "Measurement Level" COUNT = "Frequency Count";
+29813      title9 ' ';
+MPRINT(EM_DIAGRAM):   title9 ' ';
+29814      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "Variable Summary";
+MPRINT(EM_DIAGRAM):   run;
+29815      run;
+
+NOTE: There were 2 observations read from the data set WORK.ASSOCMETA.
+NOTE: The PROCEDURE PRINT printed page 4.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+29816      title10;
+MPRINT(EM_DIAGRAM):   title10;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   * Assoc: Preparing metadata for Training;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   data WORK.M3B75LMF;
+MPRINT(EM_DIAGRAM):   set WORK.M3B75LMF;
+MPRINT(EM_DIAGRAM):   where USE = 'Y';
+MPRINT(EM_DIAGRAM):   run;
+29824      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+29825      * Assoc: Sorting Training Data;
+MPRINT(EM_DIAGRAM):   * Assoc: Sorting Training Data;
+29826      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+29827      proc sort data=EMWS1.FIMPORT_train(keep= Transacao Cupon) out=WORK.SORTEDTRAIN;
+MPRINT(EM_DIAGRAM):   proc sort data=EMWS1.FIMPORT_train(keep= Transacao Cupon) out=WORK.SORTEDTRAIN;
+29828      by Cupon;
+MPRINT(EM_DIAGRAM):   by Cupon;
+29829      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 55 observations read from the data set EMWS1.FIMPORT_TRAIN.
+NOTE: View EMWS1.FIMPORT_TRAIN.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+NOTE: There were 55 observations read from the data set EMWS1.FIMPORT_DATA.
+NOTE: The data set WORK.SORTEDTRAIN has 55 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+29830      *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------* ;
+29831      * EM: DMDBClass Macro ;
+MPRINT(EM_DIAGRAM):   * EM: DMDBClass Macro ;
+29832      *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+29833      %macro DMDBClass;
+29834          Transacao(DESC)
+29835      %mend DMDBClass;
+29836      *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+29837      * EM: DMDBVar Macro ;
+MPRINT(EM_DIAGRAM):   * EM: DMDBVar Macro ;
+29838      *------------------------------------------------------------* ;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------* ;
+29839      %macro DMDBVar;
+29840      
+29841      %mend DMDBVar;
+29842      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+29843      * EM: Create DMDB;
+MPRINT(EM_DIAGRAM):   * EM: Create DMDB;
+29844      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+29845      proc dmdb batch data=WORK.SORTEDTRAIN
+29846      dmdbcat=WORK.EM_DMDB
+29847      maxlevel = 100001
+29848      normlen= 256
+29849      out=WORK.EM_DMDB
+29850      ;
+MPRINT(EM_DIAGRAM):   proc dmdb batch data=WORK.SORTEDTRAIN dmdbcat=WORK.EM_DMDB maxlevel = 100001 normlen= 256 out=WORK.EM_DMDB ;
+29851      id
+29852      Cupon
+29853      ;
+MPRINT(EM_DIAGRAM):   id Cupon ;
+MPRINT(EM_DIAGRAM):   class
+29854      class %DMDBClass;
+MPRINT(DMDBCLASS):   Transacao(DESC)
+MPRINT(EM_DIAGRAM):  ;
+29855      target
+29856      Transacao
+29857      ;
+MPRINT(EM_DIAGRAM):   target Transacao ;
+29858      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: Records processed = 55   Memory used = 511K.
+NOTE: There were 55 observations read from the data set WORK.SORTEDTRAIN.
+NOTE: The data set WORK.EM_DMDB has 55 observations and 2 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.03 seconds
+      
+
+MPRINT(EM_DIAGRAM):   quit;
+29859      quit;
+
+number_of_elements=0 
+number_of_elements=1 
+29860      options nocleanup;
+MPRINT(EM_DIAGRAM):    options nocleanup;
+29861      proc assoc dmdb dmdbcat=WORK.EM_DMDB out=EMWS1.Assoc_ASSOC data=WORK.EM_DMDB
+29862      pctsup = 5
+29863      items=2
+29864      ;
+MPRINT(EM_DIAGRAM):   proc assoc dmdb dmdbcat=WORK.EM_DMDB out=EMWS1.Assoc_ASSOC data=WORK.EM_DMDB pctsup = 5 items=2 ;
+29865      customer
+29866      CUPON
+29867      ;
+MPRINT(EM_DIAGRAM):   customer CUPON ;
+29868      target
+29869      TRANSACAO
+29870      ;
+MPRINT(EM_DIAGRAM):   target TRANSACAO ;
+29871      run;
+MPRINT(EM_DIAGRAM):   run;
+
+
+----- Potential 1 item sets = 12 -----
+Counting items, records read:       55
+Number of customers:                20
+Support level for item sets:         1
+Maximum count for a set:            10
+Sets meeting support level:         12
+Megs of memory used:              0.51
+
+----- Potential 2 item sets = 66 -----
+Counting items, records read:       55
+Maximum count for a set:             5
+Sets meeting support level:         34
+Megs of memory used:              0.51
+NOTE: The data set EMWS1.ASSOC_ASSOC has 47 observations and 4 variables.
+NOTE: PROCEDURE ASSOC used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+MPRINT(EM_DIAGRAM):   quit;
+29872      quit;
+29873      
+29874      
+
+29875      proc rulegen in = EMWS1.Assoc_ASSOC out=EMWS1.Assoc_RULE minconf = 10
+29876      ;
+MPRINT(EM_DIAGRAM):    proc rulegen in = EMWS1.Assoc_ASSOC out=EMWS1.Assoc_RULE minconf = 10 ;
+29877      run;
+MPRINT(EM_DIAGRAM):   run;
+
+write set 1
+write set 2
+NOTE: There were 47 observations read from the data set EMWS1.ASSOC_ASSOC.
+NOTE: The data set EMWS1.ASSOC_RULE has 80 observations and 12 variables.
+NOTE: PROCEDURE RULEGEN used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+MPRINT(EM_DIAGRAM):   quit;
+29878      quit;
+29879      
+
+29880      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+29881      * Assoc: Selecting rules;
+MPRINT(EM_DIAGRAM):   * Assoc: Selecting rules;
+29882      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+29883      proc sort data=EMWS1.Assoc_RULE;
+MPRINT(EM_DIAGRAM):   proc sort data=EMWS1.Assoc_RULE;
+29884      by descending LIFT;
+MPRINT(EM_DIAGRAM):   by descending LIFT;
+29885      where SET_SIZE>1;
+MPRINT(EM_DIAGRAM):   where SET_SIZE>1;
+29886      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 68 observations read from the data set EMWS1.ASSOC_RULE.
+      WHERE SET_SIZE>1;
+NOTE: The data set EMWS1.ASSOC_RULE has 68 observations and 12 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+29887      data WORK.ASSOCSUBSET;
+MPRINT(EM_DIAGRAM):   data WORK.ASSOCSUBSET;
+29888      set EMWS1.Assoc_RULE(obs=80);
+MPRINT(EM_DIAGRAM):   set EMWS1.Assoc_RULE(obs=80);
+29889      index=_N_;
+MPRINT(EM_DIAGRAM):   index=_N_;
+29890      label index = "%sysfunc(sasmsg(sashelp.dmine, rpt_ruleIndex_vlabel,  NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label index = "Rule Index";
+29891      label _LHAND = "%sysfunc(sasmsg(sashelp.dmine, rpt_leftHandSide_vlabel,  NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label _LHAND = "Left Hand of Rule";
+29892      label _RHAND = "%sysfunc(sasmsg(sashelp.dmine, rpt_rightHandSide_vlabel,  NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label _RHAND = "Right Hand of Rule";
+29893      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 68 observations read from the data set EMWS1.ASSOC_RULE.
+NOTE: The data set WORK.ASSOCSUBSET has 68 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+29894      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+29895      * Assoc: Creating Links and Nodes data sets;
+MPRINT(EM_DIAGRAM):   * Assoc: Creating Links and Nodes data sets;
+29896      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+29897      data EMWS1.Assoc_LINKS(keep=LINKID _LHAND _RHAND LIFT EXP_CONF CONF SUPPORT COUNT rename=(_RHAND=TO _LHAND=FROM)) WORK.LEFT(keep=_LHAND rename=(_LHAND=ITEM)) WORK.RIGHT(keep=_RHAND rename=(_RHAND=ITEM));
+MPRINT(EM_DIAGRAM):   data EMWS1.Assoc_LINKS(keep=LINKID _LHAND _RHAND LIFT EXP_CONF CONF SUPPORT COUNT rename=(_RHAND=TO _LHAND=FROM)) WORK.LEFT(keep=_LHAND rename=(_LHAND=ITEM)) WORK.RIGHT(keep=_RHAND rename=(_RHAND=ITEM));
+29898      label _RHAND= "%sysfunc(sasmsg(sashelp.dmine, rpt_to_vlabel ,            NOQUOTE))" _LHAND= "%sysfunc(sasmsg(sashelp.dmine, rpt_from_vlabel,           NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label _RHAND= "To" _LHAND= "From";
+29899      set WORK.ASSOCSUBSET;
+MPRINT(EM_DIAGRAM):   set WORK.ASSOCSUBSET;
+29900      label LINKID = "%sysfunc(sasmsg(sashelp.dmine, rpt_varclus_label_linkid , NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label LINKID = "Link ID";
+29901      LINKID = _N_;
+MPRINT(EM_DIAGRAM):   LINKID = _N_;
+29902      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 68 observations read from the data set WORK.ASSOCSUBSET.
+NOTE: The data set EMWS1.ASSOC_LINKS has 68 observations and 8 variables.
+NOTE: The data set WORK.LEFT has 68 observations and 1 variables.
+NOTE: The data set WORK.RIGHT has 68 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+29903      data WORK.ASSOCTEMP;
+MPRINT(EM_DIAGRAM):   data WORK.ASSOCTEMP;
+29904      set WORK.LEFT WORK.RIGHT;
+MPRINT(EM_DIAGRAM):   set WORK.LEFT WORK.RIGHT;
+29905      where ITEM ne '';
+MPRINT(EM_DIAGRAM):   where ITEM ne '';
+29906      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 68 observations read from the data set WORK.LEFT.
+      WHERE ITEM not = ' ';
+NOTE: There were 68 observations read from the data set WORK.RIGHT.
+      WHERE ITEM not = ' ';
+NOTE: The data set WORK.ASSOCTEMP has 136 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+29907      proc sort data=WORK.ASSOCTEMP nodup;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.ASSOCTEMP nodup;
+29908      by ITEM;
+MPRINT(EM_DIAGRAM):   by ITEM;
+29909      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 136 observations read from the data set WORK.ASSOCTEMP.
+NOTE: 124 duplicate observations were deleted.
+NOTE: The data set WORK.ASSOCTEMP has 12 observations and 1 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+29910      data WORK.ITEMS (keep=ITEM COUNT);
+MPRINT(EM_DIAGRAM):   data WORK.ITEMS (keep=ITEM COUNT);
+29911      set EMWS1.Assoc_ASSOC;
+MPRINT(EM_DIAGRAM):   set EMWS1.Assoc_ASSOC;
+29912      where set_size=1;
+MPRINT(EM_DIAGRAM):   where set_size=1;
+29913      ITEM = ITEM1;
+MPRINT(EM_DIAGRAM):   ITEM = ITEM1;
+29914      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 12 observations read from the data set EMWS1.ASSOC_ASSOC.
+      WHERE set_size=1;
+NOTE: The data set WORK.ITEMS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+29915      proc sort data=WORK.ITEMS;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.ITEMS;
+29916      by ITEM;
+MPRINT(EM_DIAGRAM):   by ITEM;
+29917      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 12 observations read from the data set WORK.ITEMS.
+NOTE: The data set WORK.ITEMS has 12 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+29918      data EMWS1.Assoc_NODES;
+MPRINT(EM_DIAGRAM):   data EMWS1.Assoc_NODES;
+29919      merge WORK.ASSOCTEMP(in=a) WORK.ITEMS;
+MPRINT(EM_DIAGRAM):   merge WORK.ASSOCTEMP(in=a) WORK.ITEMS;
+29920      by ITEM;
+MPRINT(EM_DIAGRAM):   by ITEM;
+29921      if COUNT=. then COUNT=-1;
+MPRINT(EM_DIAGRAM):   if COUNT=. then COUNT=-1;
+29922      if a then output;
+MPRINT(EM_DIAGRAM):   if a then output;
+29923      label ITEM = "%sysfunc(sasmsg(sashelp.dmine, rpt_item_vlabel ,     NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel ,    NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label ITEM = "Item" COUNT = "Frequency Count";
+29924      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 12 observations read from the data set WORK.ASSOCTEMP.
+NOTE: There were 12 observations read from the data set WORK.ITEMS.
+NOTE: The data set EMWS1.ASSOC_NODES has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+29925      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+29926      * Assoc: Creating Rules data set;
+MPRINT(EM_DIAGRAM):   * Assoc: Creating Rules data set;
+29927      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+29928      proc sort data=WORK.ASSOCSUBSET out=EMWS1.Assoc_RULES;
+MPRINT(EM_DIAGRAM):   proc sort data=WORK.ASSOCSUBSET out=EMWS1.Assoc_RULES;
+29929      by descending LIFT _RHAND;
+MPRINT(EM_DIAGRAM):   by descending LIFT _RHAND;
+29930      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 68 observations read from the data set WORK.ASSOCSUBSET.
+NOTE: The data set EMWS1.ASSOC_RULES has 68 observations and 13 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+29931      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+29932      * Assoc: Marking Rules to Transpose;
+MPRINT(EM_DIAGRAM):   * Assoc: Marking Rules to Transpose;
+29933      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+29934      data EMWS1.Assoc_RULES;
+MPRINT(EM_DIAGRAM):   data EMWS1.Assoc_RULES;
+29935      set EMWS1.Assoc_RULES;
+MPRINT(EM_DIAGRAM):   set EMWS1.Assoc_RULES;
+29936      label Transpose= "%sysfunc(sasmsg(sashelp.dmine, rpt_transposeRule_vlabel,  NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label Transpose= "Transpose Rule";
+29937      if _N_ <= 80 then Transpose=1;
+MPRINT(EM_DIAGRAM):   if _N_ <= 80 then Transpose=1;
+29938      else Transpose=0;
+MPRINT(EM_DIAGRAM):   else Transpose=0;
+29939      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 68 observations read from the data set EMWS1.ASSOC_RULES.
+NOTE: The data set EMWS1.ASSOC_RULES has 68 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+29940      %let numtransrules = 0;
+29941      data WORK.RULEID;
+MPRINT(EM_DIAGRAM):    data WORK.RULEID;
+29942      set EMWS1.Assoc_RULES(where=(transpose=1)) end=eof;
+MPRINT(EM_DIAGRAM):   set EMWS1.Assoc_RULES(where=(transpose=1)) end=eof;
+29943      ruleid = _N_;
+MPRINT(EM_DIAGRAM):   ruleid = _N_;
+29944      drop transpose;
+MPRINT(EM_DIAGRAM):   drop transpose;
+29945      if eof then call symput('numtransrules', strip(put(_N_, best.)));
+MPRINT(EM_DIAGRAM):   if eof then call symput('numtransrules', strip(put(_N_, best.)));
+29946      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 68 observations read from the data set EMWS1.ASSOC_RULES.
+      WHERE transpose=1;
+NOTE: The data set WORK.RULEID has 68 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+29947      proc print data = EMWS1.Assoc_RULES(drop=Transpose obs=25) noobs label;
+MPRINT(EM_DIAGRAM):    proc print data = EMWS1.Assoc_RULES(drop=Transpose obs=25) noobs label;
+29948      title9 ' ';
+MPRINT(EM_DIAGRAM):   title9 ' ';
+29949      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_association_title  , NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "Association Report";
+MPRINT(EM_DIAGRAM):   run;
+29950      run;
+
+NOTE: There were 25 observations read from the data set EMWS1.ASSOC_RULES.
+NOTE: The PROCEDURE PRINT printed page 5.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+29951      proc means data=EMWS1.Assoc_RULES min max mean;
+MPRINT(EM_DIAGRAM):   proc means data=EMWS1.Assoc_RULES min max mean;
+29952      var exp_conf conf support lift;
+MPRINT(EM_DIAGRAM):   var exp_conf conf support lift;
+29953      title9 ' ';
+MPRINT(EM_DIAGRAM):   title9 ' ';
+29954      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_ruleStatistics_title  , NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "Rule Statistics";
+MPRINT(EM_DIAGRAM):   run;
+29955      run;
+
+NOTE: There were 68 observations read from the data set EMWS1.ASSOC_RULES.
+NOTE: The PROCEDURE MEANS printed page 6.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.03 seconds
+      
+
+29956      proc freq data=EMWS1.Assoc_RULES;
+MPRINT(EM_DIAGRAM):   proc freq data=EMWS1.Assoc_RULES;
+29957      table set_size;
+MPRINT(EM_DIAGRAM):   table set_size;
+29958      title9;
+MPRINT(EM_DIAGRAM):   title9;
+29959      title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_sequence_title  , NOQUOTE))";
+MPRINT(EM_DIAGRAM):   title10 "Sequence Report";
+MPRINT(EM_DIAGRAM):   run;
+29960      run;
+
+NOTE: There were 68 observations read from the data set EMWS1.ASSOC_RULES.
+NOTE: The PROCEDURE FREQ printed page 7.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+29961      title10;
+MPRINT(EM_DIAGRAM):   title10;
+29962      data EMWS1.Assoc_RULEMAP(keep=map rule);
+MPRINT(EM_DIAGRAM):    data EMWS1.Assoc_RULEMAP(keep=map rule);
+29963      length map $8;
+MPRINT(EM_DIAGRAM):   length map $8;
+29964      label map = "%sysfunc(sasmsg(sashelp.dmine, rpt_map_vlabel,  NOQUOTE))";
+MPRINT(EM_DIAGRAM):   label map = "Map";
+29965      set EMWS1.Assoc_RULES;
+MPRINT(EM_DIAGRAM):   set EMWS1.Assoc_RULES;
+29966      map = "RULE"!!left(trim(put(_n_, 12.0)));
+MPRINT(EM_DIAGRAM):   map = "RULE"!!left(trim(put(_n_, 12.0)));
+29967      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 68 observations read from the data set EMWS1.ASSOC_RULES.
+NOTE: The data set EMWS1.ASSOC_RULEMAP has 68 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+MPRINT(EM_DIAGRAM):    proc printto;
+MPRINT(EM_DIAGRAM):   run;

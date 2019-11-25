@@ -1,0 +1,81 @@
+*------------------------------------------------------------*
+User:                DATA MINING T12
+Date:                17/09/19
+Time:                22h37min48s
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+         Measurement    Frequency
+Role        Level         Count
+ 
+INPUT     INTERVAL          1
+INPUT     NOMINAL           1
+ 
+ 
+ 
+ 
+ 
+The CONTENTS Procedure
+ 
+Data Set Name        EMWS1.FIMPORT_DATA            Observations          55
+Member Type          DATA                          Variables             2
+Engine               V9                            Indexes               0
+Created              17/09/2019 22:37:43           Observation Length    24
+Last Modified        17/09/2019 22:37:43           Deleted Observations  0
+Protection                                         Compressed            NO
+Data Set Type                                      Sorted                NO
+Label
+Data Representation  WINDOWS_64
+Encoding             wlatin1  Western (Windows)
+ 
+ 
+                                                                          Engine/Host Dependent Information
+ 
+Data Set Page Size          65536
+Number of Data Set Pages    1
+First Data Page             1
+Max Obs per Page            2715
+Obs in First Data Page      55
+Number of Data Set Repairs  0
+ExtendObsCounter            YES
+Filename                    C:\Users\DATA MINING T12\Desktop\Data Mining T12\Aula 66 - Cesto de Compras - Prof. Daniel Walter\Exercicio\Aula66\Workspaces\EMWS1\fimport_data.sas7bdat
+Release Created             9.0401M4
+Host Created                X64_10PRO
+Owner Name                  LABDATA-SAM\DATA MINING T12
+File Size                   128KB
+File Size (bytes)           131072
+ 
+ 
+           Alphabetic List of Variables and Attributes
+ 
+#    Variable     Type    Len    Format    Informat    Label
+ 
+1    Cupon        Num       8    BEST9.                Cupon
+2    Transacao    Char      9    $9.       $9.         Transacao
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Exported Attributes for TRAIN Port
+ 
+          Measurement    Frequency
+Role         Level         Count
+ 
+ID         INTERVAL          1
+TARGET     NOMINAL           1
